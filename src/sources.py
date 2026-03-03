@@ -1,7 +1,7 @@
 import json
 import random
 
-from task import Task
+from src.task import Task
 
 
 class FileTaskSource:
@@ -43,8 +43,8 @@ class FileTaskSource:
                         print(f"Пропущен элемент: {task} - отсутствует поле 'id'")
                         continue
 
-                    task_id = task["task_id"]
-                    payload = {k: v for k, v in task.items() if k != "task_id"}
+                    task_id = task["id"]
+                    payload = {k: v for k, v in task.items() if k != "id"}
                     tasks.append(Task(id=task_id, payload=payload))
 
                 return tasks
