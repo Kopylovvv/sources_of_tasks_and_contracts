@@ -1,0 +1,38 @@
+[project]
+name = "sources_of_tasks_and_contracts"
+version = "0.1"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "logging>=0.4.9.6",
+]
+
+[dependency-groups]
+dev = [
+    "black>=26.1.0",
+    "mypy>=1.19.1",
+    "pytest>=9.0.2",
+    "pytest-cov>=7.0.0",
+    "ruff>=0.15.4",
+]
+
+[tool.pytest]
+pythonpath = ["src"]
+testpaths = ["tests"]
+addopts = [
+    "--cov=algopack",
+    "--cov-report=term-missing",
+]
+
+[tool.coverage.run]
+source = ["algopack"]
+branch = true
+
+[tool.coverage.report]
+show_missing = true
+fail_under = 80
+omit = [
+    "*/__init__.py",
+    "*/utils/*"
+]
