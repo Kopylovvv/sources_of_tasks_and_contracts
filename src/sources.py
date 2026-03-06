@@ -135,16 +135,16 @@ class APITaskSource:
         api_response = {
             "status": "success",
             "data": [
-                {"task_id": "api_001", "type": "email", "recipient": "user@example.com"},
-                {"task_id": "api_002", "type": "report", "format": "pdf"},
-                {"task_id": "api_003", "type": "sync", "target": "external_system"},
+                {"id": "api_001", "type": "email", "recipient": "user@example.com"},
+                {"id": "api_002", "type": "report", "format": "pdf"},
+                {"id": "api_003", "type": "sync", "target": "external_system"},
             ]
         }
 
         tasks = []
         for item in api_response["data"]:
-            task_id = item["task_id"]
-            payload = {k: v for k, v in item.items() if k != "task_id"}
+            task_id = item["id"]
+            payload = {k: v for k, v in item.items() if k != "id"}
             tasks.append(Task(id=task_id, payload=payload))
 
         return tasks
